@@ -111,10 +111,7 @@
     <!-- Quote Section -->
     <section class="py-16 bg-pink-50">
         <div class="container mx-auto px-4 max-w-3xl text-center">
-            <p class="text-lg italic mb-6">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
-                pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan
-                Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat
-                tanda-tanda (kebesaran Allah) bagi kaum yang berpikir." (Surah Ar-Rum : 21)</p>
+            <p class="text-lg italic mb-6">{{ $invitation->quotes_content}}</p><b>{{ $invitation->quotes_source}}</b>
         </div>
     </section>
 
@@ -368,158 +365,175 @@
         </div>
     </section>
 
-<section class="py-16 bg-pink-50">
-    <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-playfair font-bold mb-6">We would like to thank you for sharing in our wedding celebration.</h2>
-        <p class="text-xl mb-6">We are grateful for your presence, warm wishes, and your generous gift. We look forward to our future together and to making more memories with you.</p>
-        <p class="text-2xl font-playfair font-bold mb-8">See You On Our Big Day</p>
-        <p class="text-3xl font-playfair font-bold mb-8">{{ $invitation->groom_nickname }} & {{ $invitation->bride_nickname }}</p>
+    <section class="py-16 bg-pink-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-playfair font-bold mb-6">We would like to thank you for sharing in our wedding
+                celebration.</h2>
+            <p class="text-xl mb-6">We are grateful for your presence, warm wishes, and your generous gift. We look
+                forward to our future together and to making more memories with you.</p>
+            <p class="text-2xl font-playfair font-bold mb-8">See You On Our Big Day</p>
+            <p class="text-3xl font-playfair font-bold mb-8">{{ $invitation->groom_nickname }} &
+                {{ $invitation->bride_nickname }}</p>
 
-        <!-- Gift Section -->
-        <div class="mt-12">
-            <h3 class="text-2xl font-playfair font-bold mb-6">🎁 Your Generous Gift</h3>
-            <p class="text-lg mb-4">Terima kasih telah menambah semangat kegembiraan pernikahan kami dengan kehadiran dan hadiah indah saudara/i</p>
+            <!-- Gift Section -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-playfair font-bold mb-6">🎁 Your Generous Gift</h3>
+                <p class="text-lg mb-4">Terima kasih telah menambah semangat kegembiraan pernikahan kami dengan
+                    kehadiran dan hadiah indah saudara/i</p>
 
-            <div class="flex justify-center mb-6">
-                <label class="inline-flex items-center text-xl font-medium mr-6 bg-red-500 text-white px-4 py-2 rounded-full">
-                    <input type="radio" name="gift_type" value="cash" class="gift-radio" />
-                    <span class="ml-2">🏧 Cash</span>
-                </label>
-                <label class="inline-flex items-center text-xl font-medium mr-6 bg-red-500 text-white px-4 py-2 rounded-full">
-                    <input type="radio" name="gift_type" value="present" class="gift-radio" />
-                    <span class="ml-2">🎁 Gift</span>
-                </label>
-            </div>
+                <div class="flex justify-center mb-6">
+                    <label
+                        class="inline-flex items-center text-xl font-medium mr-6 bg-red-500 text-white px-4 py-2 rounded-full">
+                        <input type="radio" name="gift_type" value="cash" class="gift-radio" />
+                        <span class="ml-2">🏧 Cash</span>
+                    </label>
+                    <label
+                        class="inline-flex items-center text-xl font-medium mr-6 bg-red-500 text-white px-4 py-2 rounded-full">
+                        <input type="radio" name="gift_type" value="present" class="gift-radio" />
+                        <span class="ml-2">🎁 Gift</span>
+                    </label>
+                </div>
 
-            <!-- Cash Section -->
-            <div id="cashSection" class="gift-section hidden">
-                <h4 class="text-xl font-semibold mb-4">Bank Account Details</h4>
-                <p class="text-lg mb-4">Please find the bank account details for your cash gift below:</p>
+                <!-- Cash Section -->
+                <div id="cashSection" class="gift-section hidden">
+                    <h4 class="text-xl font-semibold mb-4">Bank Account Details</h4>
+                    <p class="text-lg mb-4">Please find the bank account details for your cash gift below:</p>
 
-                <!-- Bank Information with Logos -->
-                <div class="space-y-6">
-                    <!-- Bank Mandiri -->
-                    <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md">
-                        <div class="flex items-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg" alt="Mandiri Logo" class="w-12 h-12 mr-4" />
-                            <div>
-                                <p class="text-lg font-medium">Bank Mandiri</p>
-                                <p class="text-lg">1640005497039</p>
-                                <p class="text-lg">M IMRON</p>
+                    <!-- Bank Information with Logos -->
+                    <div class="space-y-6">
+                        <!-- Bank Mandiri -->
+                        <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg shadow-md">
+                            <div class="flex items-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg"
+                                    alt="Mandiri Logo" class="w-32 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
+                                <div class="text-left">
+                                    <p class="text-lg font-medium">Bank Mandiri</p>
+                                    <p class="text-lg">1640005497039</p>
+                                    <p class="text-lg">M IMRON</p>
+                                </div>
                             </div>
+                            <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full text-lg"
+                                onclick="copyToClipboard('mandiri')">Copy Rekening</button>
                         </div>
-                        <button class="copy-btn bg-gray-300 py-2 px-4 rounded-full text-lg" onclick="copyToClipboard('mandiri')">Copy Account</button>
-                    </div>
 
-                    <!-- Bank BCA (First Account) -->
-                    <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md">
-                        <div class="flex items-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/640px-Bank_Central_Asia.svg.png" alt="BCA Logo" class="w-12 h-12 mr-4" />
-                            <div>
-                                <p class="text-lg font-medium">BCA</p>
-                                <p class="text-lg">8010356513</p>
-                                <p class="text-lg">M. IMRON</p>
+                        <!-- Bank BCA (First Account) -->
+                        <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg shadow-md">
+                            <div class="flex items-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/640px-Bank_Central_Asia.svg.png"
+                                    alt="BCA Logo" class="w-32 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
+                                <div class="text-left">
+                                    <p class="text-lg font-medium">BCA</p>
+                                    <p class="text-lg">8010356513</p>
+                                    <p class="text-lg">M. IMRON</p>
+                                </div>
                             </div>
+                            <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full text-lg"
+                                onclick="copyToClipboard('bca1')">Copy Rekening</button>
                         </div>
-                        <button class="copy-btn bg-gray-300 py-2 px-4 rounded-full text-lg" onclick="copyToClipboard('bca1')">Copy Account</button>
-                    </div>
 
-                    <!-- Bank BCA (Second Account) -->
-                    <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md">
-                        <div class="flex items-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/640px-Bank_Central_Asia.svg.png" alt="BCA Logo" class="w-12 h-12 mr-4" />
-                            <div>
-                                <p class="text-lg font-medium">BCA</p>
-                                <p class="text-lg">0930014061</p>
-                                <p class="text-lg">Azizah Eka Cahyati</p>
+                        <!-- Bank BCA (Second Account) -->
+                        <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg shadow-md">
+                            <div class="flex items-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/640px-Bank_Central_Asia.svg.png"
+                                    alt="BCA Logo" class="w-32 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
+                                <div class="text-left">
+                                    <p class="text-lg font-medium">BCA</p>
+                                    <p class="text-lg">0930014061</p>
+                                    <p class="text-lg">Azizah Eka Cahyati</p>
+                                </div>
                             </div>
+                            <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full text-lg"
+                                onclick="copyToClipboard('bca2')">Copy Rekening</button>
                         </div>
-                        <button class="copy-btn bg-gray-300 py-2 px-4 rounded-full text-lg" onclick="copyToClipboard('bca2')">Copy Account</button>
-                    </div>
 
-                    <!-- Bank BRI -->
-                    <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md">
-                        <div class="flex items-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/BRI_2020.svg" alt="BRI Logo" class="w-12 h-12 mr-4" />
-                            <div>
-                                <p class="text-lg font-medium">BRI</p>
-                                <p class="text-lg">117301010510502</p>
-                                <p class="text-lg">M. Imron</p>
+                        <!-- Bank BRI -->
+                        <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg shadow-md">
+                            <div class="flex items-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/BRI_2020.svg"
+                                    alt="BRI Logo" class="w-32 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
+                                <div class="text-left">
+                                    <p class="text-lg font-medium">BRI</p>
+                                    <p class="text-lg">117301010510502</p>
+                                    <p class="text-lg">M. Imron</p>
+                                </div>
                             </div>
+                            <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full text-lg"
+                                onclick="copyToClipboard('bri')">Copy Rekening</button>
                         </div>
-                        <button class="copy-btn bg-gray-300 py-2 px-4 rounded-full text-lg" onclick="copyToClipboard('bri')">Copy Account</button>
-                    </div>
 
-                    <!-- Dana -->
-                    <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md">
-                        <div class="flex items-center">
-                            <img src="https://i.scdn.co/image/ab671c3d0000f430e41a9f2d582f0887e21d1266" alt="Dana Logo" class="w-12 h-12 mr-4" />
-                            <div>
-                                <p class="text-lg font-medium">Dana</p>
-                                <p class="text-lg">082122602721</p>
+                        <!-- Dana -->
+                        <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg shadow-md">
+                            <div class="flex items-center">
+                                <img src="https://i.scdn.co/image/ab671c3d0000f430e41a9f2d582f0887e21d1266"
+                                    alt="Dana Logo" class="w-32 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
+                                <div class="text-left">
+                                    <p class="text-lg font-medium">Dana</p>
+                                    <p class="text-lg">082122602721</p>
+                                </div>
                             </div>
+                            <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full text-lg"
+                                onclick="copyToClipboard('dana')">Copy Rekening</button>
                         </div>
-                        <button class="copy-btn bg-gray-300 py-2 px-4 rounded-full text-lg" onclick="copyToClipboard('dana')">Copy Account</button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Present Section -->
-            <div id="presentSection" class="gift-section hidden">
-                <h4 class="text-xl font-semibold mb-4">Gift Address</h4>
-                <p class="text-lg mb-4">If you would like to send a present, please use the address below:</p>
-                <div class="mb-4">
-                    <p class="text-lg font-medium">Address: 123 Wedding St, Jakarta, Indonesia</p>
+                <!-- Present Section -->
+                <div id="presentSection" class="gift-section hidden">
+                    <h4 class="text-xl font-semibold mb-4">Gift Address</h4>
+                    <p class="text-lg mb-4">If you would like to send a present, please use the address below:</p>
+                    <div class="mb-4">
+                        <p class="text-lg font-medium">Address: 123 Wedding St, Jakarta, Indonesia</p>
+                    </div>
+                    <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full mt-4 text-lg"
+                        onclick="copyToClipboard('address')">Copy Address</button>
                 </div>
-                <button class="copy-btn bg-gray-300 py-2 px-4 rounded-full mt-4 text-lg" onclick="copyToClipboard('address')">Copy Address</button>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<script>
-    // Handle radio button changes to show the correct section
-    document.querySelectorAll('.gift-radio').forEach((radio) => {
-        radio.addEventListener('change', (event) => {
-            if (event.target.value === 'cash') {
-                document.getElementById('cashSection').classList.remove('hidden');
-                document.getElementById('presentSection').classList.add('hidden');
-            } else if (event.target.value === 'present') {
-                document.getElementById('presentSection').classList.remove('hidden');
-                document.getElementById('cashSection').classList.add('hidden');
-            }
+    <script>
+        // Handle radio button changes to show the correct section
+        document.querySelectorAll('.gift-radio').forEach((radio) => {
+            radio.addEventListener('change', (event) => {
+                if (event.target.value === 'cash') {
+                    document.getElementById('cashSection').classList.remove('hidden');
+                    document.getElementById('presentSection').classList.add('hidden');
+                } else if (event.target.value === 'present') {
+                    document.getElementById('presentSection').classList.remove('hidden');
+                    document.getElementById('cashSection').classList.add('hidden');
+                }
+            });
         });
-    });
 
-    // Copy to clipboard function
-    function copyToClipboard(type) {
-        let textToCopy;
-        if (type === 'mandiri') {
-            textToCopy = `Bank Mandiri\n1640005497039\nM IMRON`;
-        } else if (type === 'bca1') {
-            textToCopy = `BCA\n8010356513\nM. IMRON`;
-        } else if (type === 'bca2') {
-            textToCopy = `BCA\n0930014061\nAzizah Eka Cahyati`;
-        } else if (type === 'bri') {
-            textToCopy = `BRI\n117301010510502\nM. Imron`;
-        } else if (type === 'dana') {
-            textToCopy = `Dana\n082122602721`;
-        } else if (type === 'address') {
-            textToCopy = 'Address: 123 Wedding St, Jakarta, Indonesia';
+        // Copy to clipboard function
+        function copyToClipboard(type) {
+            let textToCopy;
+            if (type === 'mandiri') {
+                textToCopy = `1640005497039`;
+            } else if (type === 'bca1') {
+                textToCopy = `8010356513`;
+            } else if (type === 'bca2') {
+                textToCopy = `0930014061`;
+            } else if (type === 'bri') {
+                textToCopy = `117301010510502`;
+            } else if (type === 'dana') {
+                textToCopy = `082122602721`;
+            } else if (type === 'address') {
+                textToCopy = 'Address: 123 Wedding St, Jakarta, Indonesia';
+            }
+
+            // Create a temporary input element to copy text
+            const tempInput = document.createElement('input');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // Show confirmation
+            alert('Details copied to clipboard!');
         }
-
-        // Create a temporary input element to copy text
-        const tempInput = document.createElement('input');
-        tempInput.value = textToCopy;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-
-        // Show confirmation
-        alert('Details copied to clipboard!');
-    }
-</script>
+    </script>
 
 
 
