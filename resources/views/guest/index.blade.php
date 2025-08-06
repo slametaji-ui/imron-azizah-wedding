@@ -260,7 +260,7 @@ Bismillaahirrahmaanirrahiim
 
 Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, untuk menghadiri acara Resepsi Pernikahan Kami
 
-The Wedding Of Diani Maulina & Slamet Aji Suryana
+The Wedding Of Azizah & Imron
 
 Info lebih lengkap klik link dibawah ini
 ${window.location.origin}?to=${encodedFullname}
@@ -268,7 +268,7 @@ ${window.location.origin}?to=${encodedFullname}
 Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.
 
 Kami yang berbahagia
-Diani Maulina & Slamet Aji Suryana
+Azizah & Imron
 
 Mohon maaf perihal undangan hanya dibagikan melalui pesan ini.
     `;
@@ -294,7 +294,7 @@ Bismillaahirrahmaanirrahiim
 
 Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, untuk menghadiri acara Resepsi Pernikahan Kami
 
-The Wedding Of Diani Maulina & Slamet Aji Suryana
+The Wedding Of Azizah & Imron
 
 Info lebih lengkap klik link dibawah ini
 ${window.location.origin}?to=${encodedFullname}
@@ -302,7 +302,7 @@ ${window.location.origin}?to=${encodedFullname}
 Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.
 
 Kami yang berbahagia
-Diani Maulina & Slamet Aji Suryana
+Azizah & Imron
 
 Mohon maaf perihal undangan hanya dibagikan melalui pesan ini.
 `;
