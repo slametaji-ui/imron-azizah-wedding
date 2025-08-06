@@ -24,30 +24,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const audio = new Audio();
     audio.loop = true;
 
-    // For demo purposes, we'll use a placeholder
-    // In a real implementation, you would use the actual music file
-    audio.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+    // // For demo purposes, we'll use a placeholder
+    // // In a real implementation, you would use the actual music file
+    // audio.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
 
-    if (musicToggle) {
-        musicToggle.addEventListener('click', function() {
-            if (isPlaying) {
-                audio.pause();
-                musicState.textContent = 'Play';
-                isPlaying = false;
-            } else {
-                playMusic();
-            }
-        });
-    }
+    // if (musicToggle) {
+    //     musicToggle.addEventListener('click', function() {
+    //         if (isPlaying) {
+    //             audio.pause();
+    //             musicState.textContent = 'Play';
+    //             isPlaying = false;
+    //         } else {
+    //             playMusic();
+    //         }
+    //     });
+    // }
 
-    // Function to play music
-    function playMusic() {
-        audio.play().catch(e => console.log("Audio play failed:", e));
-        if (musicState) {
-            musicState.textContent = 'Pause';
-        }
-        isPlaying = true;
-    }
+    // // Function to play music
+    // function playMusic() {
+    //     audio.play().catch(e => console.log("Audio play failed:", e));
+    //     if (musicState) {
+    //         musicState.textContent = 'Pause';
+    //     }
+    //     isPlaying = true;
+    // }
 
     // Animate elements when they come into view
     const animateOnScroll = function() {
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Play music automatically when page loads (with user interaction required)
 window.addEventListener('click', function() {
-    const audio = document.querySelector('audio');
+    const audio = document.getElementById('music');
     if (audio) {
         audio.play().catch(e => console.log("Auto-play prevented:", e));
     }

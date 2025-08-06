@@ -32,11 +32,103 @@
             }
         }
     </script>
+    <style>
+        #coverInvitation {
+            overflow: hidden;
+        }
+
+        .allow-scroll {
+            overflow: auto;
+        }
+
+        #coverInvitation {
+            transition: opacity 0.5s ease-out;
+            /* Transisi halus ketika menyembunyikan section */
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+            /* Nonaktifkan interaksi ketika section disembunyikan */
+        }
+
+        .show {
+            display: block;
+            /* Menampilkan hero section ketika diperlukan */
+        }
+    </style>
+    <style>
+        /* Styling for Image Modal */
+        #imagePreviewModal {
+            display: none;
+            /* Hidden by default */
+            z-index: 1000;
+        }
+
+        #previewImage {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        #closePreview {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Modal Background */
+        #imagePreviewModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ambil semua item galeri
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const previewModal = document.getElementById('imagePreviewModal');
+            const previewImage = document.getElementById('previewImage');
+            const closePreviewBtn = document.getElementById('closePreview');
+
+            // Loop untuk setiap item galeri
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const fullImageSrc = this.querySelector('img').getAttribute('data-fullimage');
+                    // Menampilkan gambar dalam modal
+                    previewImage.src = fullImageSrc;
+                    previewModal.classList.remove('hidden');
+                });
+            });
+
+            // Menutup modal ketika tombol close diklik
+            closePreviewBtn.addEventListener('click', function() {
+                previewModal.classList.add('hidden');
+            });
+
+            // Menutup modal jika pengguna mengklik di luar gambar
+            previewModal.addEventListener('click', function(e) {
+                if (e.target === previewModal) {
+                    previewModal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </head>
 
 <body class="font-sans">
 
-    <section class="relative h-screen flex items-center justify-center bg-cover bg-center">
+    <!--  Cover Invitation -->
+    <section id="coverInvitation" class="relative h-screen flex items-center justify-center bg-cover bg-center">
         <div class="container mx-auto px-4 text-center">
             <img src="{{ url('assets/clone/img/logo.png') }}" alt="" style="height: 8rem;"class="mx-auto mb-4">
             <h2 class="font-bold mb-12">Who's watching?</h2>
@@ -54,9 +146,10 @@
             </div>
         </div>
     </section>
+
     <!-- Hero Section -->
-    <section class="welcome relative h-screen flex items-end justify-start bg-cover bg-center"
-        style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');">
+    <section id="heroSection" class="welcome relative h-screen flex items-end justify-start bg-cover bg-center"
+        style="background-image: url('assets/clone/img/DTS08505.jpg');">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div class="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-black via-transparent to-transparent"></div>
         <div class="relative z-10 text-left text-white px-4 pb-10 pl-10">
@@ -77,15 +170,12 @@
         </div>
     </section>
 
-
     <!-- Coming Soon Section -->
     <section class="py-16">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto text-start">
-                <div
-                    class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64 mb-6 flex items-center justify-center">
-                    <span class="text-gray-500">Video Preview</span>
-                </div>
+                <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt=""
+                    class="rounded-xl w-full h-64 mb-6">
                 <div class="flex">
                     <img src="{{ url('assets/clone/img/n.png') }}" alt="" style="height: 1rem;" class="mb-4">
                     <small class="text-l font-playfair ml-2 mb-2">D O C U M E N T E R</small>
@@ -111,7 +201,8 @@
     <!-- Quote Section -->
     <section class="py-16 bg-pink-50">
         <div class="container mx-auto px-4 max-w-3xl text-center">
-            <p class="text-lg italic mb-6">{{ $invitation->quotes_content}}</p><b>{{ $invitation->quotes_source}}</b>
+            <p class="text-lg italic mb-6">{{ $invitation->quotes_content }}</p>
+            <b>{{ $invitation->quotes_source }}</b>
         </div>
     </section>
 
@@ -120,10 +211,9 @@
         <div class="container mx-auto px-4 max-w-3xl">
             <h2 class="text-3xl font-playfair font-bold text-center mb-12">Breaking News</h2>
             <div class="bg-white rounded-xl shadow-lg p-8">
-                <div
-                    class="bg-gray-200 border-2 border-dashed rounded-lg w-full h-64 mb-6 flex items-center justify-center">
-                    <span class="text-gray-500">Breaking News Image</span>
-                </div>
+
+                <img src="{{ url('assets/clone/img/DTS08444.jpg') }}" alt=""
+                    class="rounded-xl w-full h-64 mb-6 object-cover">
                 <p class="mb-4">Hai semuanya! Ada kabar gembira nih, kita mau ngabarin kalau kita bakal segera
                     menikah!</p>
                 <p class="mb-4">Tapi, maaf banget ya kalau nggak bisa ngundang kalian semua. Rencananya, kita bakal
@@ -141,27 +231,22 @@
             <h2 class="text-3xl font-playfair font-bold text-center mb-12">Bride & Groom</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
                 <!-- Groom -->
-                <div class="text-center">
-                    <div
-                        class="bg-gray-200 border-2 border-dashed rounded-full w-64 h-64 mx-auto mb-6 flex items-center justify-center">
-                        <span class="text-gray-500">Groom</span>
-                    </div>
+                <div class="flex flex-col items-center text-center">
+                    <img src="{{ url('assets/clone/img/imron.jpg') }}" alt=""
+                        class="rounded-full w-48 h-48 flex mb-4 items-center justify-center">
                     <h3 class="text-2xl font-playfair font-bold mb-2">{{ $invitation->groom_fullname }}</h3>
                     <p class="text-gray-600 mb-4">Putra dari Bapak {{ $invitation->groom_father_name }} dan Ibu
                         {{ $invitation->groom_mother_name }}</p>
                 </div>
                 <!-- Bride -->
-                <div class="text-center">
-                    <div
-                        class="bg-gray-200 border-2 border-dashed rounded-full w-64 h-64 mx-auto mb-6 flex items-center justify-center">
-                        <span class="text-gray-500">Bride</span>
-                    </div>
+                <div class="flex flex-col items-center text-center">
+                    <img src="{{ url('assets/clone/img/azizah.jpg') }}" alt=""
+                        class="rounded-full w-48 h-48 flex mb-4 items-center justify-center">
                     <h3 class="text-2xl font-playfair font-bold mb-2">{{ $invitation->bride_fullname }}</h3>
                     <p class="text-gray-600 mb-4">Putri dari Bapak {{ $invitation->bride_father_name }} dan Ibu
                         {{ $invitation->bride_mother_name }}</p>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Timeline & Location Section -->
@@ -341,29 +426,54 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-playfair font-bold text-center mb-12">Our Memories</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+                <!-- Gallery Item 1 -->
                 <div
-                    class="bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center">
-                    <span class="text-gray-500">Memory 1</span>
+                    class="gallery-item bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center cursor-pointer">
+                    <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt="Memory 1"
+                        class="w-full h-full object-cover"
+                        data-fullimage="{{ url('assets/clone/img/DTS08393.jpg') }}">
                 </div>
+                <!-- Gallery Item 2 -->
                 <div
-                    class="bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center">
-                    <span class="text-gray-500">Memory 2</span>
+                    class="gallery-item bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center cursor-pointer">
+                    <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt="Memory 2"
+                        class="w-full h-full object-cover"
+                        data-fullimage="{{ url('assets/clone/img/DTS08393.jpg') }}">
                 </div>
+                <!-- Gallery Item 3 -->
                 <div
-                    class="bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center">
-                    <span class="text-gray-500">Memory 3</span>
+                    class="gallery-item bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center cursor-pointer">
+                    <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt="Memory 3"
+                        class="w-full h-full object-cover"
+                        data-fullimage="{{ url('assets/clone/img/DTS08393.jpg') }}">
                 </div>
+                <!-- Gallery Item 4 -->
                 <div
-                    class="bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center">
-                    <span class="text-gray-500">Memory 4</span>
+                    class="gallery-item bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center cursor-pointer">
+                    <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt="Memory 4"
+                        class="w-full h-full object-cover"
+                        data-fullimage="{{ url('assets/clone/img/DTS08393.jpg') }}">
                 </div>
+                <!-- Gallery Item 5 -->
                 <div
-                    class="bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center">
-                    <span class="text-gray-500">Memory 5</span>
+                    class="gallery-item bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center cursor-pointer">
+                    <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt="Memory 5"
+                        class="w-full h-full object-cover"
+                        data-fullimage="{{ url('assets/clone/img/DTS08393.jpg') }}">
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Modal for Image Preview -->
+    <div id="imagePreviewModal" class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center hidden">
+        <div class="relative">
+            <img id="previewImage" src="" alt="Image Preview" class="max-w-full max-h-full">
+            <button id="closePreview" class="absolute top-2 right-2 text-white text-3xl">×</button>
+        </div>
+    </div>
+
+
 
     <section class="py-16 bg-pink-50">
         <div class="container mx-auto px-4 text-center">
@@ -386,11 +496,6 @@
                         class="inline-flex items-center text-xl font-medium mr-6 bg-red-500 text-white px-4 py-2 rounded-full">
                         <input type="radio" name="gift_type" value="cash" class="gift-radio" />
                         <span class="ml-2">🏧 Cash</span>
-                    </label>
-                    <label
-                        class="inline-flex items-center text-xl font-medium mr-6 bg-red-500 text-white px-4 py-2 rounded-full">
-                        <input type="radio" name="gift_type" value="present" class="gift-radio" />
-                        <span class="ml-2">🎁 Gift</span>
                     </label>
                 </div>
 
@@ -477,16 +582,6 @@
                     </div>
                 </div>
 
-                <!-- Present Section -->
-                <div id="presentSection" class="gift-section hidden">
-                    <h4 class="text-xl font-semibold mb-4">Gift Address</h4>
-                    <p class="text-lg mb-4">If you would like to send a present, please use the address below:</p>
-                    <div class="mb-4">
-                        <p class="text-lg font-medium">Address: 123 Wedding St, Jakarta, Indonesia</p>
-                    </div>
-                    <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full mt-4 text-lg"
-                        onclick="copyToClipboard('address')">Copy Address</button>
-                </div>
             </div>
         </div>
     </section>
@@ -535,15 +630,12 @@
         }
     </script>
 
-
-
-
     <section class="py-8 bg-white border-t">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div>
                     <h3 class="font-semibold">Music:</h3>
-                    <p>"Telling the World (From the Soundtrack to "RIO" the Movie)"</p>
+                    <p>"Separuhku (Nano)"</p>
                 </div>
                 <div class="mt-4 md:mt-0">
                     <button id="musicToggle" class="bg-primary text-white px-4 py-2 rounded-full flex items-center">
@@ -554,6 +646,9 @@
         </div>
     </section>
 
+    <audio id="music" loop="" autoplay="">
+        <source src="{{ url('/assets/clone/lagu.mp3') }}" type="audio/mpeg">
+    </audio>
     <!-- JavaScript -->
     <script src="{{ url('/assets/clone/scripts.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -565,6 +660,32 @@
     <script>
         dayjs.extend(dayjs_plugin_relativeTime);
         dayjs.locale('id');
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ambil elemen tombol dan elemen audio
+            const openInvitationBtn = document.getElementById('openInvitation');
+            const audio = document.getElementById('music');
+
+            // Fungsi untuk memutar musik
+            function playMusic() {
+                audio.play().catch(e => console.log("Audio play failed:", e));
+            }
+
+            // Event listener untuk tombol open invitation
+            if (openInvitationBtn) {
+                openInvitationBtn.addEventListener('click', function() {
+                    // Scroll ke bagian selanjutnya
+                    document.querySelector('.welcome').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Putar musik saat undangan dibuka
+                    playMusic();
+                });
+            }
+        });
     </script>
 
     <script>
@@ -692,6 +813,41 @@
                 }
             });
         }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const openInvitationBtn = document.getElementById('openInvitation');
+            const coverInvitation = document.getElementById('coverInvitation');
+            const heroSection = document.getElementById('heroSection');
+
+            // Pastikan elemen ada di DOM
+            if (openInvitationBtn && coverInvitation && heroSection) {
+                // Menambahkan kelas no-scroll pada body untuk mencegah scroll
+                document.body.classList.add('no-scroll');
+
+                openInvitationBtn.addEventListener('click', function() {
+                    // Menyembunyikan section cover invitation dengan transisi
+                    coverInvitation.classList.add('hidden');
+
+                    // Menampilkan section hero
+                    heroSection.classList.add('show');
+
+                    // Mengizinkan scroll setelah tombol diklik
+                    document.body.classList.remove('no-scroll');
+                    document.body.classList.add('allow-scroll');
+
+                    // Scroll ke section hero dengan smooth
+                    heroSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Setelah scroll selesai, mencegah scroll ke bagian atas (cover invitation)
+                    window.scrollTo(0, 0); // Pastikan halaman tidak kembali ke atas
+                });
+            } else {
+                console.error('Element not found: openInvitation, coverInvitation, or heroSection');
+            }
+        });
     </script>
 </body>
 
