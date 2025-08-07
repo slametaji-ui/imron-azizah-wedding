@@ -193,13 +193,17 @@ button {
 }
 
 body {
-    font-family: 'Netflix Sans', sans-serif;
+    font-family: 'Netflix Sans', sans-serif !important;
     background-color: var(--secondary-color);
     color: var(--text-light);
 }
 
+h1, h2, h3, h4, h5, h6,p,span {
+    font-family: 'Netflix Sans', sans-serif !important;
+}
+
 .font-playfair {
-    font-family: 'Netflix Sans', sans-serif;
+    font-family: 'Netflix Sans', sans-serif !important;
 }
 
 /* Hero Section */

@@ -88,7 +88,11 @@
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div class="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-black via-transparent to-transparent"></div>
         <div class="relative z-10 text-left text-white px-4 pb-10 pl-10">
-            <img src="{{ url('assets/clone/img/logo.png') }}" alt="" style="height: 4rem;" class="mb-4">
+            {{-- <img src="{{ url('assets/clone/img/logo.png') }}" alt="" style="height: 4rem;" class="mb-4"> --}}
+             <div class="flex">
+                    <img src="{{ url('assets/clone/img/n.png') }}" alt="" style="height: 1rem;" class="mb-4">
+                    <small class="text-l font-playfair ml-2 mb-2">D O C U M E N T E R</small>
+                </div>
             <h1 class="text-4xl md:text-6xl font-playfair font-bold">{{ $invitation->groom_nickname }} &
                 {{ $invitation->bride_nickname }}:</h1>
             <p class="text-4xl md:text-6xl font-playfair font-bold mb-2">Sebelum Hari H</p>
@@ -110,7 +114,7 @@
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto text-start">
                 <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt=""
-                    class="rounded-xl w-full h-auto mb-6 object-cover">
+                    class="rounded-xl w-full h-auto mb-6 object-cover object-center">
                 <div class="flex">
                     <img src="{{ url('assets/clone/img/n.png') }}" alt="" style="height: 1rem;" class="mb-4">
                     <small class="text-l font-playfair ml-2 mb-2">D O C U M E N T E R</small>
@@ -126,8 +130,8 @@
                         <span class="text-xs">HD</span>
                     </div>
                 </div>
-                <div class="text-white-100 bg-primary p-1 rounded-xl">
-                    <p class="text-lg">Coming soon on Saturday, 14 December 2024</p>
+                <div class="text-white-100 bg-primary p-2 rounded-xl">
+                    <p class="text-sm">Coming soon on Saturday, 14 December 2024</p>
                 </div>
             </div>
         </div>
@@ -148,14 +152,14 @@
             <div class="bg-white rounded-xl shadow-lg p-8">
 
                 <img src="{{ url('assets/clone/img/DTS08444.jpg') }}" alt=""
-                    class="rounded-xl w-full h-64 mb-6 object-cover">
+                    class="rounded-xl w-full h-64 mb-6 object-cover object-center">
                 <p class="mb-4">Hai semuanya! Ada kabar gembira nih, kita mau ngabarin kalau kita bakal segera
                     menikah!</p>
-                <p class="mb-4">Tapi, maaf banget ya kalau nggak bisa ngundang kalian semua. Rencananya, kita bakal
-                    ngadain pernikahan yang lebih private di Pondok Cabe, cuma sama keluarga dan sahabat terdekat.</p>
+                <p class="mb-4">insyaAllah dilaksanakan di Pondok Cabe.</p>
                 <p class="mb-4">Doain ya supaya semuanya lancar dan kita bisa segera membangun rumah tangga yang
                     bahagia. Makasih banyak atas doa dan dukungannya!</p>
-                <p class="font-semibold">Best regards,<br>Bride and Groom</p>
+                <p class="font-semibold">Best regards,<br>{{ $invitation->bride_nickname }} and
+                    {{ $invitation->groom_nickname }}</p>
             </div>
         </div>
     </section>
@@ -193,7 +197,7 @@
                 <div class="flex flex-col md:flex-row items-center mb-16">
                     <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
                         < <img src="{{ url('assets/clone/img/DTS08426.jpg') }}" alt="Akad Nikah"
-                            class="rounded-lg w-96 h-48 flex object-cover">
+                            class="rounded-lg w-96 lg:h-48 sm:w-48 sm:h-48 flex object-cover object-center">
                     </div>
                     <div class="md:w-2/3 md:pl-8 text-center md:text-left">
                         <h3 class="text-2xl font-playfair font-bold">Akad Nikah</h3>
@@ -213,7 +217,7 @@
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
                         <img src="{{ url('assets/clone/img/DTS08404.jpg') }}" alt="Resepsi"
-                            class="rounded-lg w-96 h-48 flex object-cover">
+                            class="rounded-lg w-96 lg:h-48 sm:w-48 sm:h-48 flex object-cover">
                     </div>
                     <div class="md:w-2/3 md:pl-8 text-center md:text-left">
                         <h3 class="text-2xl font-playfair font-bold">Resepsi</h3>
@@ -356,7 +360,7 @@
     <section class="py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-playfair font-bold text-center mb-12">Our Memories</h2>
-            <div class="img grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+            <div class="img grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
                 <img src="{{ url('/assets/clone/img/DTS08323.jpg') }}"
                     src2="{{ url('/assets/clone/img/DTS08323.jpg') }}" zoombox
                     class="rounded-lg w-full h-48 object-cover">
@@ -371,6 +375,9 @@
                 <img src="{{ url('/assets/clone/img/DTS08350.jpg') }}"
                     src2="{{ url('/assets/clone/img/DTS08350.jpg') }}" zoombox
                     class="rounded-lg w-full h-48 object-cover">
+                <img src="{{ url('/assets/clone/img/DTS08404.jpg') }}"
+                    src2="{{ url('/assets/clone/img/DTS08404.jpg') }}" zoombox
+                    class="rounded-lg w-full h-48 object-cover">
             </div>
         </div>
     </section>
@@ -383,7 +390,7 @@
             <!-- Gift Section -->
             <div class="mt-12">
                 <h3 class="text-2xl font-playfair font-bold mb-6">🎁 Tanda Kasih</h3>
-                <p class="text-lg mb-4">Untuk Keluarha dan Sahabat yang ingin memberikan kegembiraan melalui hadiah
+                <p class="text-lg mb-4">Untuk Keluarga dan Sahabat yang ingin memberikan kegembiraan melalui hadiah
                     untuk pernikahan kami silakan kirim melalui informasi berikut:</p>
 
                 <div class="flex justify-center mb-6">
@@ -479,7 +486,7 @@
 
             </div>
 
-            <p class="text-xl mb-6 mt-6">Merupakan kehormatan & kebahagiaan bagi kami
+            <p class="text-lg mb-6 mt-6">Merupakan kehormatan & kebahagiaan bagi kami
                 apabila Bapak/Ibu/Saudara/i dapat berhadir
                 dan memberikan doa restu kepada kami.</p>
             <p class="text-2xl font-playfair font-bold mb-8">Kami yang berbahagia,</p>
@@ -538,11 +545,6 @@
                 <div>
                     <h3 class="font-semibold">Music:</h3>
                     <p>"Separuhku (Nano)"</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <button id="musicToggle" class="bg-primary text-white px-4 py-2 rounded-full flex items-center">
-                        <span id="musicState">Pause</span>
-                    </button>
                 </div>
             </div>
         </div>
