@@ -57,72 +57,7 @@
             /* Menampilkan hero section ketika diperlukan */
         }
     </style>
-    <style>
-        /* Styling for Image Modal */
-        #imagePreviewModal {
-            display: none;
-            /* Hidden by default */
-            z-index: 1000;
-        }
-
-        #previewImage {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        #closePreview {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        /* Modal Background */
-        #imagePreviewModal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Ambil semua item galeri
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            const previewModal = document.getElementById('imagePreviewModal');
-            const previewImage = document.getElementById('previewImage');
-            const closePreviewBtn = document.getElementById('closePreview');
-
-            // Loop untuk setiap item galeri
-            galleryItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const fullImageSrc = this.querySelector('img').getAttribute('data-fullimage');
-                    // Menampilkan gambar dalam modal
-                    previewImage.src = fullImageSrc;
-                    previewModal.classList.remove('hidden');
-                });
-            });
-
-            // Menutup modal ketika tombol close diklik
-            closePreviewBtn.addEventListener('click', function() {
-                previewModal.classList.add('hidden');
-            });
-
-            // Menutup modal jika pengguna mengklik di luar gambar
-            previewModal.addEventListener('click', function(e) {
-                if (e.target === previewModal) {
-                    previewModal.classList.add('hidden');
-                }
-            });
-        });
-    </script>
+    <link rel="stylesheet" href="{{ url('assets/clone/css/zoom.css') }}">
 </head>
 
 <body class="font-sans">
@@ -175,7 +110,7 @@
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto text-start">
                 <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt=""
-                    class="rounded-xl w-full h-64 mb-6">
+                    class="rounded-xl w-full h-auto mb-6 object-cover">
                 <div class="flex">
                     <img src="{{ url('assets/clone/img/n.png') }}" alt="" style="height: 1rem;" class="mb-4">
                     <small class="text-l font-playfair ml-2 mb-2">D O C U M E N T E R</small>
@@ -257,10 +192,8 @@
                 <!-- Akad Nikah -->
                 <div class="flex flex-col md:flex-row items-center mb-16">
                     <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
-                        <div
-                            class="bg-gray-200 border-2 border-dashed rounded-lg w-96 h-48 flex items-center justify-center">
-                            <span class="text-gray-500">Akad Nikah</span>
-                        </div>
+                        < <img src="{{ url('assets/clone/img/DTS08426.jpg') }}" alt="Akad Nikah"
+                            class="rounded-lg w-96 h-48 flex object-cover">
                     </div>
                     <div class="md:w-2/3 md:pl-8 text-center md:text-left">
                         <h3 class="text-2xl font-playfair font-bold">Akad Nikah</h3>
@@ -279,10 +212,8 @@
                 <!-- Resepsi -->
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
-                        <div
-                            class="bg-gray-200 border-2 border-dashed rounded-lg w-96 h-48 flex items-center justify-center">
-                            <span class="text-gray-500">Resepsi</span>
-                        </div>
+                        <img src="{{ url('assets/clone/img/DTS08404.jpg') }}" alt="Resepsi"
+                            class="rounded-lg w-96 h-48 flex object-cover">
                     </div>
                     <div class="md:w-2/3 md:pl-8 text-center md:text-left">
                         <h3 class="text-2xl font-playfair font-bold">Resepsi</h3>
@@ -365,7 +296,7 @@
     </section>
 
     <!-- Our Love Story Section -->
-    <section class="py-16 bg-gray-50">
+    {{-- <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-playfair font-bold text-center mb-12">Our Love Story</h2>
             <div class="max-w-4xl mx-auto">
@@ -419,83 +350,47 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Gallery Section -->
     <section class="py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-playfair font-bold text-center mb-12">Our Memories</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
-                <!-- Gallery Item 1 -->
-                <div
-                    class="gallery-item bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center cursor-pointer">
-                    <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt="Memory 1"
-                        class="w-full h-full object-cover"
-                        data-fullimage="{{ url('assets/clone/img/DTS08393.jpg') }}">
-                </div>
-                <!-- Gallery Item 2 -->
-                <div
-                    class="gallery-item bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center cursor-pointer">
-                    <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt="Memory 2"
-                        class="w-full h-full object-cover"
-                        data-fullimage="{{ url('assets/clone/img/DTS08393.jpg') }}">
-                </div>
-                <!-- Gallery Item 3 -->
-                <div
-                    class="gallery-item bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center cursor-pointer">
-                    <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt="Memory 3"
-                        class="w-full h-full object-cover"
-                        data-fullimage="{{ url('assets/clone/img/DTS08393.jpg') }}">
-                </div>
-                <!-- Gallery Item 4 -->
-                <div
-                    class="gallery-item bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center cursor-pointer">
-                    <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt="Memory 4"
-                        class="w-full h-full object-cover"
-                        data-fullimage="{{ url('assets/clone/img/DTS08393.jpg') }}">
-                </div>
-                <!-- Gallery Item 5 -->
-                <div
-                    class="gallery-item bg-gray-200 border-2 border-dashed rounded-lg w-full h-48 flex items-center justify-center cursor-pointer">
-                    <img src="{{ url('assets/clone/img/DTS08393.jpg') }}" alt="Memory 5"
-                        class="w-full h-full object-cover"
-                        data-fullimage="{{ url('assets/clone/img/DTS08393.jpg') }}">
-                </div>
+            <div class="img grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+                <img src="{{ url('/assets/clone/img/DTS08323.jpg') }}"
+                    src2="{{ url('/assets/clone/img/DTS08323.jpg') }}" zoombox
+                    class="rounded-lg w-full h-48 object-cover">
+                <img src="{{ url('/assets/clone/img/DTS08334.jpg') }}"
+                    src2="{{ url('/assets/clone/img/DTS08334.jpg') }}" zoombox
+                    class="rounded-lg w-full h-48 object-cover">
+                <img src="{{ url('/assets/clone/img/DTS08444.jpg') }}"
+                    src2="{{ url('/assets/clone/img/DTS08444.jpg') }}" zoombox
+                    class="rounded-lg w-full h-48 object-cover">
+                <img src="{{ url('/assets/clone/img/GEDE.jpg') }}" src2="{{ url('/assets/clone/img/GEDE.jpg') }}"
+                    zoombox class="rounded-lg w-full h-48 object-cover">
+                <img src="{{ url('/assets/clone/img/DTS08350.jpg') }}"
+                    src2="{{ url('/assets/clone/img/DTS08350.jpg') }}" zoombox
+                    class="rounded-lg w-full h-48 object-cover">
             </div>
         </div>
     </section>
 
-    <!-- Modal for Image Preview -->
-    <div id="imagePreviewModal" class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center hidden">
-        <div class="relative">
-            <img id="previewImage" src="" alt="Image Preview" class="max-w-full max-h-full">
-            <button id="closePreview" class="absolute top-2 right-2 text-white text-3xl">×</button>
-        </div>
-    </div>
-
-
 
     <section class="py-16 bg-pink-50">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-playfair font-bold mb-6">We would like to thank you for sharing in our wedding
-                celebration.</h2>
-            <p class="text-xl mb-6">We are grateful for your presence, warm wishes, and your generous gift. We look
-                forward to our future together and to making more memories with you.</p>
-            <p class="text-2xl font-playfair font-bold mb-8">See You On Our Big Day</p>
-            <p class="text-3xl font-playfair font-bold mb-8">{{ $invitation->groom_nickname }} &
-                {{ $invitation->bride_nickname }}</p>
+
 
             <!-- Gift Section -->
             <div class="mt-12">
-                <h3 class="text-2xl font-playfair font-bold mb-6">🎁 Your Generous Gift</h3>
-                <p class="text-lg mb-4">Terima kasih telah menambah semangat kegembiraan pernikahan kami dengan
-                    kehadiran dan hadiah indah saudara/i</p>
+                <h3 class="text-2xl font-playfair font-bold mb-6">🎁 Tanda Kasih</h3>
+                <p class="text-lg mb-4">Untuk Keluarha dan Sahabat yang ingin memberikan kegembiraan melalui hadiah
+                    untuk pernikahan kami silakan kirim melalui informasi berikut:</p>
 
                 <div class="flex justify-center mb-6">
                     <label
                         class="inline-flex items-center text-xl font-medium mr-6 bg-red-500 text-white px-4 py-2 rounded-full">
                         <input type="radio" name="gift_type" value="cash" class="gift-radio" />
-                        <span class="ml-2">🏧 Cash</span>
+                        <span class="ml-2">🏧 Dompet Digital</span>
                     </label>
                 </div>
 
@@ -510,79 +405,86 @@
                         <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg shadow-md">
                             <div class="flex items-center">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg"
-                                    alt="Mandiri Logo" class="w-32 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
+                                    alt="Mandiri Logo" class="w-24 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
                                 <div class="text-left">
                                     <p class="text-lg font-medium">Bank Mandiri</p>
                                     <p class="text-lg">1640005497039</p>
                                     <p class="text-lg">M IMRON</p>
                                 </div>
                             </div>
-                            <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full text-lg"
-                                onclick="copyToClipboard('mandiri')">Copy Rekening</button>
+                            <button class="copy-btn bg-gray-400 py-1 px-2 rounded-full text-sm"
+                                onclick="copyToClipboard('mandiri')">Copy</button>
                         </div>
 
                         <!-- Bank BCA (First Account) -->
                         <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg shadow-md">
                             <div class="flex items-center">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/640px-Bank_Central_Asia.svg.png"
-                                    alt="BCA Logo" class="w-32 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
+                                    alt="BCA Logo" class="w-24 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
                                 <div class="text-left">
                                     <p class="text-lg font-medium">BCA</p>
                                     <p class="text-lg">8010356513</p>
                                     <p class="text-lg">M. IMRON</p>
                                 </div>
                             </div>
-                            <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full text-lg"
-                                onclick="copyToClipboard('bca1')">Copy Rekening</button>
+                            <button class="copy-btn bg-gray-400 py-1 px-2 rounded-full text-sm"
+                                onclick="copyToClipboard('bca1')">Copy</button>
                         </div>
 
                         <!-- Bank BCA (Second Account) -->
                         <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg shadow-md">
                             <div class="flex items-center">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/640px-Bank_Central_Asia.svg.png"
-                                    alt="BCA Logo" class="w-32 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
+                                    alt="BCA Logo" class="w-24 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
                                 <div class="text-left">
                                     <p class="text-lg font-medium">BCA</p>
                                     <p class="text-lg">0930014061</p>
                                     <p class="text-lg">Azizah Eka Cahyati</p>
                                 </div>
                             </div>
-                            <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full text-lg"
-                                onclick="copyToClipboard('bca2')">Copy Rekening</button>
+                            <button class="copy-btn bg-gray-400 py-1 px-2 rounded-full text-sm"
+                                onclick="copyToClipboard('bca2')">Copy</button>
                         </div>
 
                         <!-- Bank BRI -->
                         <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg shadow-md">
                             <div class="flex items-center">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/BRI_2020.svg"
-                                    alt="BRI Logo" class="w-32 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
+                                    alt="BRI Logo" class="w-24 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
                                 <div class="text-left">
                                     <p class="text-lg font-medium">BRI</p>
                                     <p class="text-lg">117301010510502</p>
                                     <p class="text-lg">M. Imron</p>
                                 </div>
                             </div>
-                            <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full text-lg"
-                                onclick="copyToClipboard('bri')">Copy Rekening</button>
+                            <button class="copy-btn bg-gray-400 py-1 px-2 rounded-full text-sm"
+                                onclick="copyToClipboard('bri')">Copy</button>
                         </div>
 
                         <!-- Dana -->
                         <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg shadow-md">
                             <div class="flex items-center">
                                 <img src="https://i.scdn.co/image/ab671c3d0000f430e41a9f2d582f0887e21d1266"
-                                    alt="Dana Logo" class="w-32 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
+                                    alt="Dana Logo" class="w-24 h-auto mr-4 bg-slate-200 px-2 py-5 rounded" />
                                 <div class="text-left">
                                     <p class="text-lg font-medium">Dana</p>
                                     <p class="text-lg">082122602721</p>
                                 </div>
                             </div>
-                            <button class="copy-btn bg-gray-400 py-2 px-4 rounded-full text-lg"
-                                onclick="copyToClipboard('dana')">Copy Rekening</button>
+                            <button class="copy-btn bg-gray-400 py-1 px-2 rounded-full text-sm"
+                                onclick="copyToClipboard('dana')">Copy</button>
                         </div>
                     </div>
                 </div>
 
             </div>
+
+            <p class="text-xl mb-6 mt-6">Merupakan kehormatan & kebahagiaan bagi kami
+                apabila Bapak/Ibu/Saudara/i dapat berhadir
+                dan memberikan doa restu kepada kami.</p>
+            <p class="text-2xl font-playfair font-bold mb-8">Kami yang berbahagia,</p>
+            <p class="text-3xl font-playfair font-bold mb-8">{{ $invitation->groom_nickname }} &
+                {{ $invitation->bride_nickname }}</p>
         </div>
     </section>
 
@@ -657,6 +559,7 @@
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/id.js"></script>
+    <script src="{{ url('/assets/clone/js/zoom.js') }}"></script>
     <script>
         dayjs.extend(dayjs_plugin_relativeTime);
         dayjs.locale('id');
@@ -849,6 +752,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>

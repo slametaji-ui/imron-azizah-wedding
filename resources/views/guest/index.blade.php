@@ -49,7 +49,8 @@
                                         <td class="border px-4 py-2 ">
                                             <div class="flex justify-center space-x-2">
                                                 <!-- Copy Message Button -->
-                                                <button onclick="copyMessageToClipboard('{{ $guest->fullname }}', '{{ $guest->address }}')"
+                                                <button
+                                                    onclick="copyMessageToClipboard('{{ $guest->fullname }}', '{{ $guest->address }}')"
                                                     class="inline-block px-4 py-2 bg-gray-500 text-white font-semibold text-sm rounded-md hover:bg-gray-700">
                                                     <i class="bi bi-clipboard"></i> {{ __('Copy Message') }}
                                                 </button>
@@ -62,10 +63,11 @@
                                                 </button>
 
                                                 <!-- Edit Button -->
-                                                <button onclick="openModal('editModal', JSON.parse('{{ json_encode($guest) }}'))"
-    class="inline-block px-4 py-2 bg-yellow-500 text-white font-semibold text-sm rounded-md hover:bg-yellow-700">
-    <i class="bi bi-pencil-square"></i> Edit
-</button>
+                                                <button
+                                                    onclick="openModal('editModal', JSON.parse('{{ json_encode($guest) }}'))"
+                                                    class="inline-block px-4 py-2 bg-yellow-500 text-white font-semibold text-sm rounded-md hover:bg-yellow-700">
+                                                    <i class="bi bi-pencil-square"></i> Edit
+                                                </button>
 
 
                                                 <!-- Delete Button -->
@@ -136,7 +138,7 @@
                         <input type="text" name="fullname" id="edit_fullname"
                             class="w-full px-4 py-2 border rounded-md">
                     </div>
-                     <div class="mb-4">
+                    <div class="mb-4">
                         <label for="edit_phone_number"
                             class="block text-gray-700">{{ __('Phone Number (WhatsApp)') }}</label>
                         <input type="text" name="phone_number" id="edit_phone_number"
@@ -202,19 +204,19 @@
         }
     </script>
 
-<script>
-    document.getElementById('search').addEventListener('input', function() {
-        let query = this.value;
+    <script>
+        document.getElementById('search').addEventListener('input', function() {
+            let query = this.value;
 
-        fetch(`/guest/search?search=${query}`)
-            .then(response => response.json())
-            .then(data => {
-                let tbody = document.querySelector('tbody');
-                tbody.innerHTML = ''; // Clear the current table body
+            fetch(`/guest/search?search=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    let tbody = document.querySelector('tbody');
+                    tbody.innerHTML = ''; // Clear the current table body
 
-                data.forEach((guest, index) => {
-                    let tr = document.createElement('tr');
-                    tr.innerHTML = `
+                    data.forEach((guest, index) => {
+                        let tr = document.createElement('tr');
+                        tr.innerHTML = `
                         <td class="border px-4 py-2 text-center">${index + 1}</td>
                         <td class="border px-4 py-2">${guest.fullname}</td>
                         <td class="border px-4 py-2">${guest.address}</td>
@@ -239,15 +241,15 @@
                             </button>
                         </td>
                     `;
-                    tbody.appendChild(tr);
+                        tbody.appendChild(tr);
+                    });
                 });
-            });
-    });
-</script>
+        });
+    </script>
 
 
     <script>
-        function sendWaMessage(fullname, phone_number,address) {
+        function sendWaMessage(fullname, phone_number, address) {
             const encodedFullname = encodeURIComponent(fullname);
             const baseUrl = "https://wa.me/";
             const messageTemplate = `
