@@ -87,7 +87,7 @@
         style="background-image: url('assets/clone/img/DTS08505.jpg');">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div class="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-        <div class="relative z-10 text-left text-white px-4 pb-10 pl-10">
+        <div class="relative z-10 text-left text-white px-4 pb-40 pl-10">
             {{-- <img src="{{ url('assets/clone/img/logo.png') }}" alt="" style="height: 4rem;" class="mb-4"> --}}
              <div class="flex">
                     <img src="{{ url('assets/clone/img/n.png') }}" alt="" style="height: 1rem;" class="mb-4">
@@ -131,7 +131,7 @@
                     </div>
                 </div>
                 <div class="text-white-100 bg-primary p-2 rounded-xl">
-                    <p class="text-sm">Coming soon on Saturday, 14 December 2024</p>
+                    <p class="text-sm">Coming soon on {{ \Carbon\Carbon::parse($invitation->akad_date)->locale('id')->translatedFormat('l, d F Y') }}</p>
                 </div>
             </div>
         </div>
