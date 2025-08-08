@@ -196,7 +196,7 @@
                 <!-- Akad Nikah -->
                 <div class="flex flex-col md:flex-row items-center mb-16">
                     <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
-                        < <img src="{{ url('assets/clone/img/DTS08426.jpg') }}" alt="Akad Nikah"
+                        <img src="{{ url('assets/clone/img/DTS08426.jpg') }}" alt="Akad Nikah"
                             class="rounded-lg w-96 lg:h-48 sm:w-48 sm:h-48 flex object-cover object-center">
                     </div>
                     <div class="md:w-2/3 md:pl-8 text-center md:text-left">
