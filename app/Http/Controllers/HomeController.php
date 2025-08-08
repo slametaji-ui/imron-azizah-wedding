@@ -14,8 +14,7 @@ class HomeController extends Controller
     {
         $search = $request->query('to', '');
         $search = filter_var($search, FILTER_SANITIZE_STRING);
-        $guest = Guest::where('fullname', $search)->first();
-
+        $guest = Guest::where('fullname', 'like', '%' . $search . '%')->first();
 
         if ($guest) {
             $invitation = SettingInvitation::first();
